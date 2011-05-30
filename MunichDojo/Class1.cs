@@ -81,9 +81,25 @@ namespace MunichDojo
             CurrentFrame.Roll(i);
         }
 
-        public int Score()
+
+        public int Score( )
         {
-            return frames.Sum(x => x.Sum);
+            int result = 0;
+            for (int i = 0; i < frames.Count; i++)
+            {
+                if (frames[i].IsSpare)
+                {
+                    if (i < frames.Count - 1)
+                    {
+                        result += frames[i + 1].FirstRoll.Value;
+                    }                    
+                }
+                result += frames[i].Sum;
+                
+            }
+            return result;
+
+
         }
     }
 
@@ -112,6 +128,11 @@ namespace MunichDojo
         public int Sum
         {
             get { return FirstRoll.Value + SecondRoll.Value; }
+        }
+
+        public bool IsSpare
+        {
+            get { return Sum == 10; }
         }
     }
 }
