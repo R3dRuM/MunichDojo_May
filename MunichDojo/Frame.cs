@@ -30,8 +30,13 @@ namespace MunichDojo
         public int Sum
         {
             get
-            { 
+            {
+                if (IsStrike) return FirstRoll??0;
+
+                if (SecondRoll.HasValue) 
                     return FirstRoll??0 + SecondRoll??0;
+                
+                return FirstRoll??0;
             }
         }
 
