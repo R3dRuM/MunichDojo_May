@@ -99,5 +99,14 @@ namespace MunichDojo
 
             Assert.That(game.Score(), Is.EqualTo(150));
         }
+
+        [Test]
+        public void OnlyStrikesScores300()
+        {
+            var game = new Game();
+            RollMany(game, 12, 10);
+
+            Assert.That(game.Score(), Is.EqualTo(300));
+        }
     }
 }
