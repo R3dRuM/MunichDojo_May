@@ -124,6 +124,5 @@ namespace MunichDojo
             Assert.That(game.Score(), Is.EqualTo(20+13+3));
         }
 
-
     }
 }
