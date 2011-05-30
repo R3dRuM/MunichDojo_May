@@ -108,5 +108,20 @@ namespace MunichDojo
 
             Assert.That(game.Score(), Is.EqualTo(300));
         }
+
+        [Test]
+        public void StrikeAfterSpareShouldScore()
+        {
+            var game = new Game();
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(10);
+            game.Roll(1);
+            game.Roll(1);
+            
+            RollMany(game, 14, 0);
+
+            Assert.That(game.Score(), Is.EqualTo(20+12+2));
+        }
     }
 }
