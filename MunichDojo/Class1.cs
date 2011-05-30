@@ -22,13 +22,11 @@ namespace MunichDojo
     public class Game
     {
         public void Roll(int i)
-        {
-            throw new NotImplementedException();
-        }
+        {}
 
         public int Score()
         {
-        throw new NotImplementedException();
+            return 1;
         }
     }
 }
