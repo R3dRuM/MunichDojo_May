@@ -78,6 +78,16 @@ namespace MunichDojo
             Assert.That(game.Score(), Is.EqualTo(21+13+3));
         }
 
-        
+        [Test]
+        public void StrikeAtTheEndShouldScore()
+        {
+            var game = new Game();
+            RollMany(game,18);
+            game.Roll(10);
+            game.Roll(1);
+            game.Roll(2);
+
+            Assert.That(game.Score(), Is.EqualTo(16));
+        }
     }
 }
