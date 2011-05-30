@@ -62,7 +62,7 @@ namespace MunichDojo
         private int ScoreStrike(int i)
         {
             return NextFrame(i).IsStrike
-                       ? 10 + NextFrame(i+1).Sum
+                       ? 10 + NextFrame(i+1).FirstRoll.Value
                        : frames[i + 1].Sum;
         }
 
