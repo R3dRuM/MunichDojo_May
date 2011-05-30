@@ -13,6 +13,7 @@ namespace MunichDojo
         {
             var game = new Game();
             game.Roll(1);
+            game.Roll(0);
             
             Assert.That(game.Score(), Is.EqualTo(1));
         }
