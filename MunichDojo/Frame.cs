@@ -1,4 +1,6 @@
-﻿namespace MunichDojo
+﻿using System;
+
+namespace MunichDojo
 {
     internal class Frame
     {
@@ -7,7 +9,10 @@
 
         public bool IsFull
         {
-            get { return (FirstRoll.HasValue && SecondRoll.HasValue); }
+            get
+            {
+                return IsStrike?true:(FirstRoll.HasValue && SecondRoll.HasValue);
+            }
         }
 
         public void Roll(int i)
@@ -24,12 +29,20 @@
 
         public int Sum
         {
-            get { return FirstRoll.Value + SecondRoll.Value; }
+            get
+            {
+                return IsStrike?FirstRoll.Value:FirstRoll.Value + SecondRoll.Value;
+            }
         }
 
         public bool IsSpare
         {
             get { return Sum == 10; }
+        }
+
+        public bool IsStrike
+        {
+            get { return (FirstRoll.Value == 10); }
         }
     }
 }

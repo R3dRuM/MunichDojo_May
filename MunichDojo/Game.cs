@@ -37,6 +37,7 @@ namespace MunichDojo
             int result = 0;
             for (int i = 0; i < frames.Count; i++)
             {
+                if (frames[i].IsStrike)
                 if (frames[i].IsSpare)
                 {
                     if (i < frames.Count - 1)
