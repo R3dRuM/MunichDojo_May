@@ -64,5 +64,19 @@ namespace MunichDojo
 
             Assert.That(game.Score(), Is.EqualTo(14));
         }
+
+        [Test]
+        public void DoubleStrikeShouldScore()
+        {
+            var game = new Game();
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(1);
+            game.Roll(2);
+
+            RollMany(game, 14);
+
+            Assert.That(game.Score(), Is.EqualTo(21+13+3));
+        }
     }
 }
