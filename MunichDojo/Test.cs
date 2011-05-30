@@ -88,7 +88,7 @@ namespace MunichDojo
             game.Roll(1);
             game.Roll(2);
 
-            Assert.That(game.Score(), Is.EqualTo(16));
+            Assert.That(game.Score(), Is.EqualTo(13));
         }
 
         [Test]
