@@ -31,7 +31,10 @@ namespace MunichDojo
         {
             get
             {
-                return IsStrike?FirstRoll.Value:FirstRoll.Value + SecondRoll.Value;
+                if (IsStrike) return FirstRoll.Value;
+                if (SecondRoll.HasValue) 
+                return FirstRoll.Value + SecondRoll.Value;
+                return FirstRoll.Value;
             }
         }
 
