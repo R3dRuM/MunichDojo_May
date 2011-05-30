@@ -35,7 +35,7 @@ namespace MunichDojo
         public int Score()
         {
             int result = 0;
-            for (int i = 0; i < frames.Count; i++)
+            for (int i = 0; i < 10; i++)
             {
 
                 if (frames[i].IsStrike)
