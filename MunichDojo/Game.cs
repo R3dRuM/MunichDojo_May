@@ -41,7 +41,7 @@ namespace MunichDojo
                 {
                     if (frames[i].IsStrike)
                     {
-                        result += frames[i + 1].Sum;
+                        result += ScoreStrike(i);
                     }
                     else
                     {
@@ -57,6 +57,11 @@ namespace MunichDojo
             return result;
 
 
+        }
+
+        private int ScoreStrike(int i)
+        {
+            return frames[i + 1].Sum;
         }
     }
 }
