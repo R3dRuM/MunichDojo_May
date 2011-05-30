@@ -42,7 +42,7 @@ namespace MunichDojo
 
         public bool IsStrike
         {
-            get { return (FirstRoll.Value == 10); }
+            get { return (FirstRoll.HasValue?FirstRoll.Value == 10:false); }
         }
     }
 }
