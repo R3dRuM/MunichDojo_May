@@ -37,24 +37,17 @@ namespace MunichDojo
             int result = 0;
             for (int i = 0; i < frames.Count; i++)
             {
-                if (frames[i].IsStrike)
+                if (i < frames.Count - 1)
                 {
-                    if (i < frames.Count - 1)
+                    if (frames[i].IsStrike)
                     {
                         result += frames[i + 1].Sum;
                     }
-                
-                }
-                else
-                {
-
-
-
-                    if (frames[i].IsSpare)
+                    else
                     {
-                        if (i < frames.Count - 1)
+                        if (frames[i].IsSpare)
                         {
-                            result += frames[i + 1].FirstRoll.Value;
+                                result += frames[i + 1].FirstRoll.Value;
                         }
                     }
                 }
