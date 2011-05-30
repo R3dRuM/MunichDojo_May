@@ -47,7 +47,7 @@ namespace MunichDojo
                     {
                         if (frames[i].IsSpare)
                         {
-                            result += frames[i + 1].FirstRoll.Value;
+                            result += NextFrame(i).FirstRoll.Value;
                         }
                     }
                 }
@@ -55,15 +55,13 @@ namespace MunichDojo
 
             }
             return result;
-
-
         }
 
         private int ScoreStrike(int i)
         {
             return NextFrame(i).IsStrike
                        ? 10 + NextFrame(i+1).FirstRoll.Value
-                       : frames[i + 1].Sum;
+                       : NextFrame(i).Sum;
         }
 
         private Frame NextFrame(int i)
