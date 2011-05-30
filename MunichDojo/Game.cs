@@ -32,7 +32,7 @@ namespace MunichDojo
         }
 
 
-        public int Score( )
+        public int Score()
         {
             int result = 0;
             for (int i = 0; i < frames.Count; i++)
@@ -47,12 +47,12 @@ namespace MunichDojo
                     {
                         if (frames[i].IsSpare)
                         {
-                                result += frames[i + 1].FirstRoll.Value;
+                            result += frames[i + 1].FirstRoll.Value;
                         }
                     }
                 }
                 result += frames[i].Sum;
-                
+
             }
             return result;
 
