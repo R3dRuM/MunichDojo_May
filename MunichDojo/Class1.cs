@@ -28,6 +28,29 @@ namespace MunichDojo
             }
             Assert.That(game.Score(), Is.EqualTo(20));
         }
+
+        [Test]
+        public void SingleSpareShouldScore()
+        {
+            var game = new Game();
+            game.Roll(1);
+            game.Roll(9);
+
+            game.Roll(1);
+            game.Roll(0);
+            
+            RollMany(game, 16);
+
+            Assert.That(game.Score(), Is.EqualTo(12));
+        }
+
+        private void RollMany(Game game, int times)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                game.Roll(0);
+            }
+        }
     }
 
     public class Game
