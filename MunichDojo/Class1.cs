@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -52,17 +53,64 @@ namespace MunichDojo
     }
 
     public class Game
-    {
-        private List<int> rolls = new List<int>();
+    {        
+        private List<Frame> frames = new List<Frame>();
+
+        public Game()
+        {
+            frames.Add(new Frame());
+        }
+
+        private Frame CurrentFrame
+        {
+            get
+            {
+                var currentframe = frames.Last();
+                if (currentframe.IsFull)
+                {
+                    frames.Add(new Frame());
+                }
+                return frames.Last();
+            }
+        }
+
 
         public void Roll(int i)
         {
-        rolls.Add(i);
+            CurrentFrame.Roll(i);
         }
 
         public int Score()
         {
-            return rolls.Sum();
+            return frames.Sum(x => x.Sum);
+        }
+    }
+
+    internal class Frame
+    {
+        public int? FirstRoll { get; set; }
+        public int? SecondRoll { get; set; }
+
+        public bool IsFull
+        {
+            get { return (FirstRoll.HasValue && SecondRoll.HasValue); }
+        }
+
+        public void Roll(int i)
+        {
+            if (!FirstRoll.HasValue)
+            {
+                FirstRoll = i;
+            }
+            else
+            {
+                SecondRoll = i;
+            }
+        }
+
+        public int Sum
+        {
+            get { return FirstRoll.Value + SecondRoll.Value; }
         }
     }
 }
