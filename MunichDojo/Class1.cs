@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
 namespace MunichDojo
@@ -55,15 +53,16 @@ namespace MunichDojo
 
     public class Game
     {
-        private int _pins;
+        private List<int> rolls = new List<int>();
+
         public void Roll(int i)
         {
-            _pins += i;
+        rolls.Add(i);
         }
 
         public int Score()
         {
-            return _pins;
+            return rolls.Sum();
         }
     }
 }
