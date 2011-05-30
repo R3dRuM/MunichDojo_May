@@ -37,16 +37,16 @@ namespace MunichDojo
             game.Roll(1);
             game.Roll(0);
             
-            RollMany(game, 16);
+            RollMany(game, 16, 0);
 
             Assert.That(game.Score(), Is.EqualTo(12));
         }
 
-        private void RollMany(Game game, int times)
+        private void RollMany(Game game, int times, int pins)
         {
             for (int i = 0; i < times; i++)
             {
-                game.Roll(0);
+                game.Roll(pins);
             }
         }
 
@@ -59,7 +59,7 @@ namespace MunichDojo
             game.Roll(1);
             game.Roll(1);
 
-            RollMany(game, 16);
+            RollMany(game, 16, 0);
 
             Assert.That(game.Score(), Is.EqualTo(14));
         }
@@ -73,7 +73,7 @@ namespace MunichDojo
             game.Roll(1);
             game.Roll(2);
 
-            RollMany(game, 14);
+            RollMany(game, 14, 0);
 
             Assert.That(game.Score(), Is.EqualTo(21+13+3));
         }
@@ -82,12 +82,21 @@ namespace MunichDojo
         public void StrikeAtTheEndShouldScore()
         {
             var game = new Game();
-            RollMany(game,18);
+            RollMany(game,18, 0);
             game.Roll(10);
             game.Roll(1);
             game.Roll(2);
 
             Assert.That(game.Score(), Is.EqualTo(16));
+        }
+
+        [Test]
+        public void OnlyFiveRollsScores150()
+        {
+            var game = new Game();
+            RollMany(game, 21, 5);
+
+            Assert.That(game.Score(), Is.EqualTo(150));
         }
     }
 }
