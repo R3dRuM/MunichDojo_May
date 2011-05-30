@@ -38,17 +38,24 @@ namespace MunichDojo
             for (int i = 0; i < 10; i++)
             {
 
-                if (frames[i].IsStrike)
-                {
-                    result += ScoreStrike(i);
-                }
-                else if (frames[i].IsSpare)
-                {
-                    result += NextFrame(i).FirstRoll.Value;
-                }
-
-                result += frames[i].Sum;
+                result += ScoreSingleFrame(i);
             }
+            return result;
+        }
+
+        private int ScoreSingleFrame(int i)
+        {
+            int result=0;
+            if (frames[i].IsStrike)
+            {
+                result = ScoreStrike(i);
+            }
+            else if (frames[i].IsSpare)
+            {
+                result = NextFrame(i).FirstRoll.Value;
+            }
+
+            result += frames[i].Sum;
             return result;
         }
 
