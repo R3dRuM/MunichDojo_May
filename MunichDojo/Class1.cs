@@ -32,12 +32,15 @@ namespace MunichDojo
 
     public class Game
     {
+        private int _pins;
         public void Roll(int i)
-        {}
+        {
+            _pins += i;
+        }
 
         public int Score()
         {
-            return 1;
+            return _pins;
         }
     }
 }
