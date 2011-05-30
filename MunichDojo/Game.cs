@@ -37,7 +37,6 @@ namespace MunichDojo
             int result = 0;
             for (int i = 0; i < 10; i++)
             {
-
                 result += ScoreSingleFrame(i);
             }
             return result;
@@ -55,7 +54,6 @@ namespace MunichDojo
                 result += NextFrame(i).FirstRoll.Value;
             }
 
-            //result += frames[i].Sum;
             return result;
         }
 
